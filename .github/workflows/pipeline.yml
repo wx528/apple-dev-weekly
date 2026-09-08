@@ -1,0 +1,43 @@
+name: content-pipeline
+
+on:
+  schedule:
+    - cron: '0 1 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci
+      - run: npm run test:pipeline
+      - run: npm run pipeline:draft
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+      - name: Create draft PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: content/drafts-${{ github.run_id }}
+        run: |
+          if [ -z "$(git status --porcelain src/content/news)" ]; then
+            echo "no new drafts"; exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add src/content/news
+          git commit -m "content: pipeline drafts $(date +%F)"
+          git push origin "$BRANCH"
+          gh pr create --title "内容管线草稿 $(date +%F)" --body "自动生成的资讯草稿。审核清单：
+          - 逐篇打开原文链接（frontmatter 的 source），核对数字/日期/费率
+          - 修正或删除不合格条目
+          - 保留的条目将 frontmatter 中 draft: true 改为 false
+          - 合并后 Cloudflare Pages 自动部署"
