@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+import { SITE } from '../../config';
+
+const news = (await getCollection('news', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+<Base title={`资讯 — ${SITE.name}`} description="Apple 官方动态的中文资讯：政策、工具链、平台更新。" path="/news/">
+  <section class="hero">
+    <h1>资讯</h1>
+    <p>Apple 官方动态，中文解读。</p>
+  </section>
+  <div class="post-list">
+    {news.map((entry) => <PostCard entry={entry} />)}
+  </div>
+</Base>
