@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+import { SITE } from '../../config';
+
+const policyNews = (await getCollection('news', ({ data }) => !data.draft && data.tags.includes('政策')))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+<Base title={`政策 — ${SITE.name}`} description="App Store 商业条款、审核规则与各地区监管动态的中文聚合。" path="/policy/">
+  <section class="hero">
+    <h1>政策专题</h1>
+    <p>App Store 商业条款、审核规则与各地区监管动态，持续跟踪。</p>
+  </section>
+  <div class="post-list">
+    {policyNews.map((entry) => <PostCard entry={entry} />)}
+  </div>
+  <p style="margin-top:24px">说明：本专题聚合标签为「政策」的资讯；区域性政策可再按「中国区 / 欧盟」标签筛选。</p>
+</Base>

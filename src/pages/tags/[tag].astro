@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+import { SITE } from '../../config';
+
+export async function getStaticPaths() {
+  const [news, tutorials] = await Promise.all([
+    getCollection('news', ({ data }) => !data.draft),
+    getCollection('tutorials', ({ data }) => !data.draft),
+  ]);
+  const entries = [...news, ...tutorials];
+  const tags = [...new Set(entries.flatMap((entry) => entry.data.tags))];
+  return tags.map((tag) => ({
+    params: { tag },
+    props: { tag, entries: entries.filter((entry) => entry.data.tags.includes(tag)) },
+  }));
+}
+
+const { tag, entries } = Astro.props;
+const sorted = entries.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+<Base title={`标签「${tag}」— ${SITE.name}`} description={`标签「${tag}」下的全部文章。`} path={`/tags/${tag}/`}>
+  <section class="hero">
+    <h1>标签：{tag}</h1>
+    <p>共 {sorted.length} 篇。</p>
+  </section>
+  <div class="post-list">
+    {sorted.map((entry) => <PostCard entry={entry} />)}
+  </div>
+</Base>
