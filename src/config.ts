@@ -23,5 +23,5 @@ export const ANALYTICS = {
 };
 
 export const GOOGLE = {
-  siteVerification: '',
+  siteVerification: 'GIrxanUM7BbF8LBbLVcw7tAniYb5Sf_SYn0EyGFk2cM',
 };
