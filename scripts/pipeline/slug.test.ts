@@ -21,3 +21,11 @@ test('slugify 非英文标题回退 untitled', () => {
   const d = new Date('2026-09-01T00:00:00Z');
   assert.equal(slugify('全部是中文！！', d), '2026-09-01-untitled');
 });
+
+test('slugify 截断 ASCII 正文到 80 字符', () => {
+  const d = new Date('2026-09-01T00:00:00Z');
+  const long = 'word '.repeat(30).trim(); // 149 chars
+  const out = slugify(long, d);
+  const body = out.replace(/^2026-09-01-/, '');
+  assert.ok(body.length <= 80);
+});

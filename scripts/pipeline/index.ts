@@ -48,6 +48,7 @@ async function main(): Promise<void> {
       }),
     fetchPage: async (link) => {
       const res = await fetch(link, {
+        signal: AbortSignal.timeout(15_000),
         headers: { 'User-Agent': 'Mozilla/5.0 (compatible; apple-dev-weekly-pipeline/1.0)' },
       });
       if (!res.ok) throw new Error(`fetch page ${res.status}`);

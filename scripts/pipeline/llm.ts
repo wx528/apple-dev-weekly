@@ -24,6 +24,7 @@ export async function callDeepSeek(opts: {
 }): Promise<LLMResult> {
   const res = await fetch(`${opts.apiBase}/chat/completions`, {
     method: 'POST',
+    signal: AbortSignal.timeout(120_000),
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${opts.apiKey}`,

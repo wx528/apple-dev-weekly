@@ -9,6 +9,10 @@ permissions:
   contents: write
   pull-requests: write
 
+concurrency:
+  group: content-pipeline
+  cancel-in-progress: false
+
 jobs:
   draft:
     runs-on: ubuntu-latest
@@ -25,11 +29,14 @@ jobs:
       - name: Create draft PR
         env:
           GH_TOKEN: ${{ github.token }}
-          BRANCH: content/drafts-${{ github.run_id }}
+          BRANCH: content/drafts-${{ github.run_id }}-${{ github.run_attempt }}
         run: |
           if [ -z "$(git status --porcelain src/content/news)" ]; then
             echo "no new drafts"; exit 0
           fi
+          for pr in $(gh pr list --state open --json number,headRefName --jq '.[] | select(.headRefName | startswith("content/drafts-")) | .number'); do
+            gh pr close "$pr" --delete-branch
+          done
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH"
