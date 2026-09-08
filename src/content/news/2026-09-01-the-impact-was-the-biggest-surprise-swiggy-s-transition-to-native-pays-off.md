@@ -4,7 +4,7 @@ description: "Swiggy 从 2024 年起将 Instamart 和 Dineout 转为原生应用
 pubDate: 2026-09-01
 tags: [iOS, Swift, SwiftUI]
 source: https://developer.apple.com/news/?id=o5spbekm
-draft: true
+draft: false
 ---
 
 Swiggy 起初只是一家食品配送服务，如今已成为印度领先的按需便利平台，通过 Instamart 提供杂货、通过 Dineout 提供餐厅预订等服务。自 2024 年起，其应用由原生工具驱动，为数百万用户打造无缝移动体验。

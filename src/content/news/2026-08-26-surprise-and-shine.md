@@ -4,7 +4,7 @@ description: "苹果宣布将于2026年9月9日上午10点（太平洋时间）�
 pubDate: 2026-08-26
 tags: [发布会, 生态]
 source: https://developer.apple.com/news/?id=s6spdug0
-draft: true
+draft: false
 ---
 
 苹果于2026年8月26日宣布，将于9月9日上午10点（太平洋时间）举行一场特别活动。
