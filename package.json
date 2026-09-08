@@ -7,11 +7,18 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "pipeline:draft": "tsx scripts/pipeline/index.ts",
+    "test:pipeline": "node --import tsx --test scripts/pipeline/slug.test.ts scripts/pipeline/html.test.ts scripts/pipeline/tags.test.ts scripts/pipeline/content.test.ts scripts/pipeline/generate.test.ts"
   },
   "dependencies": {
-    "astro": "^5.0.0",
     "@astrojs/rss": "^4.0.0",
-    "@astrojs/sitemap": "^3.0.0"
+    "@astrojs/sitemap": "^3.0.0",
+    "astro": "^5.0.0",
+    "rss-parser": "^3.13.0",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.13"
   }
 }
