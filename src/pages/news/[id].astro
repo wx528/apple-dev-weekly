@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import { formatDate } from '../../utils/date';
 import { SITE } from '../../config';
+import Comments from '../../components/Comments.astro';
 
 export async function getStaticPaths() {
   const news = await getCollection('news', ({ data }) => !data.draft);
@@ -31,5 +32,6 @@ const { Content } = await render(entry);
     </header>
     <Content />
     <p><a href="/news/">← 返回资讯列表</a></p>
+    <Comments />
   </article>
 </Base>

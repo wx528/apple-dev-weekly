@@ -13,9 +13,9 @@ export const SITE = {
 
 export const GISCUS = {
   repo: 'wx528/apple-dev-weekly',
-  repoId: '',
+  repoId: 'R_kgDOUSGAbA',
   category: 'Announcements',
-  categoryId: '',
+  categoryId: 'DIC_kwDOUSGAbM4DFIPT',
 };
 
 export const ANALYTICS = {

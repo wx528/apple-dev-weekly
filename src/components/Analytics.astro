@@ -1,0 +1,10 @@
+---
+import { ANALYTICS } from '../config';
+---
+{ANALYTICS.cloudflareToken ? (
+  <script
+    defer
+    src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon={`{"token": "${ANALYTICS.cloudflareToken}"}`}
+  ></script>
+) : null}
