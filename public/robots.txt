@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://apple-dev-weekly.pages.dev/sitemap-index.xml

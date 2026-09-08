@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE, GISCUS } from '../config';
+---
+<Base title={`关于 — ${SITE.name}`} description={`关于${SITE.name}：定位、内容来源与联系渠道。`} path="/about/">
+  <article class="prose">
+    <h1>关于本站</h1>
+    <p>{SITE.name} 是一个面向中国 Apple 开发者的独立内容站点，专注三件事：</p>
+    <ul>
+      <li><strong>政策情报</strong>：佣金、审核规则、各地区监管动态，第一时间中文解读；</li>
+      <li><strong>工具链动态</strong>：SDK、Xcode、Swift/SwiftUI 的版本变化与迁移指南；</li>
+      <li><strong>实战教程</strong>：适配、调试、上线的可执行清单。</li>
+    </ul>
+    <h2>内容来源与准确性</h2>
+    <p>资讯类内容基于 Apple 官方公告（developer.apple.com/news 等）整理翻译，每篇均附原文链接；关键数字与日期以原文为准。教程为原创或注明出处。</p>
+    <h2>订阅与联系</h2>
+    <p>欢迎通过 <a href="/rss.xml">RSS</a> 订阅，或在 <a href={`https://github.com/${GISCUS.repo}`}>GitHub 仓库</a> 提 Issue 交流。</p>
+    <h2>免责声明</h2>
+    <p>本站为独立第三方站点，与 Apple Inc. 无从属关系；Apple 及相关商标归 Apple Inc. 所有。</p>
+  </article>
+</Base>
