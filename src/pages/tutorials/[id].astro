@@ -1,0 +1,35 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { formatDate } from '../../utils/date';
+import { SITE } from '../../config';
+
+export async function getStaticPaths() {
+  const tutorials = await getCollection('tutorials', ({ data }) => !data.draft);
+  return tutorials.map((entry) => ({
+    params: { id: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+<Base title={`${entry.data.title} — ${SITE.name}`} description={entry.data.description} path={`/tutorials/${entry.id}/`}>
+  <article class="prose">
+    <header>
+      <h1>{entry.data.title}</h1>
+      <div class="post-card-meta meta">
+        <time datetime={entry.data.pubDate.toISOString()}>发布：{formatDate(entry.data.pubDate)}</time>
+        {entry.data.updated && (
+          <time datetime={entry.data.updated.toISOString()}>更新：{formatDate(entry.data.updated)}</time>
+        )}
+        {entry.data.tags.map((tag) => (
+          <a class="tag" href={`/tags/${tag}/`}>{tag}</a>
+        ))}
+      </div>
+    </header>
+    <Content />
+    <p><a href="/tutorials/">← 返回教程列表</a></p>
+  </article>
+</Base>

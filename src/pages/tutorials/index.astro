@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+import { SITE } from '../../config';
+
+const tutorials = (await getCollection('tutorials', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+<Base title={`教程 — ${SITE.name}`} description="Swift、SwiftUI、Xcode 与 App Store 实战教程。" path="/tutorials/">
+  <section class="hero">
+    <h1>教程</h1>
+    <p>实战为先，即学即用。</p>
+  </section>
+  <div class="post-list">
+    {tutorials.map((entry) => <PostCard entry={entry} />)}
+  </div>
+</Base>
