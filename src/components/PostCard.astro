@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDate } from '../utils/date';
+
+interface Props {
+  entry: CollectionEntry<'news'> | CollectionEntry<'tutorials'>;
+}
+
+const { entry } = Astro.props;
+const href = `/${entry.collection}/${entry.id}/`;
+---
+<article class="post-card">
+  <h3 class="post-card-title"><a href={href}>{entry.data.title}</a></h3>
+  <div class="post-card-meta">
+    <time datetime={entry.data.pubDate.toISOString()}>{formatDate(entry.data.pubDate)}</time>
+    {entry.data.tags.map((tag) => (
+      <a class="tag" href={`/tags/${tag}/`}>{tag}</a>
+    ))}
+  </div>
+  <p class="post-card-desc">{entry.data.description}</p>
+</article>

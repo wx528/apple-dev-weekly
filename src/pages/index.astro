@@ -1,10 +1,33 @@
 ---
+import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import PostCard from '../components/PostCard.astro';
 import { SITE } from '../config';
+
+const news = (await getCollection('news', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const tutorials = (await getCollection('tutorials', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 <Base title={`${SITE.name} — Apple 生态情报与教程`} description={SITE.description} path="/">
   <section class="hero">
     <h1>{SITE.name}</h1>
     <p>Apple 官方政策、SDK 与工具链动态、实战教程，中文第一时间。</p>
+  </section>
+
+  <section>
+    <h2>最新资讯</h2>
+    <div class="post-list">
+      {news.slice(0, 5).map((entry) => <PostCard entry={entry} />)}
+    </div>
+    <p><a href="/news/">查看全部资讯 →</a></p>
+  </section>
+
+  <section>
+    <h2>最新教程</h2>
+    <div class="post-list">
+      {tutorials.map((entry) => <PostCard entry={entry} />)}
+    </div>
   </section>
 </Base>
