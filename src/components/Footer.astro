@@ -1,0 +1,11 @@
+---
+import { SITE, GISCUS } from '../config';
+
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <p>© {year} {SITE.name} · <a href="/rss.xml">RSS 订阅</a> · <a href={`https://github.com/${GISCUS.repo}`}>GitHub</a></p>
+    <p>本站为独立第三方站点，与 Apple Inc. 无关；Apple 及相关商标归 Apple Inc. 所有。</p>
+  </div>
+</footer>

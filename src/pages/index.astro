@@ -1,10 +1,10 @@
-<!doctype html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="utf-8" />
-    <title>Apple 开发者周刊</title>
-  </head>
-  <body>
-    <h1>Apple 开发者周刊</h1>
-  </body>
-</html>
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../config';
+---
+<Base title={`${SITE.name} — Apple 生态情报与教程`} description={SITE.description} path="/">
+  <section class="hero">
+    <h1>{SITE.name}</h1>
+    <p>Apple 官方政策、SDK 与工具链动态、实战教程，中文第一时间。</p>
+  </section>
+</Base>
