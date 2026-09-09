@@ -19,7 +19,7 @@ export const GISCUS = {
 };
 
 export const ANALYTICS = {
-  cloudflareToken: '',
+  cloudflareToken: '91c514c3d84f4c1ead80b555595f9dae',
 };
 
 export const GOOGLE = {
