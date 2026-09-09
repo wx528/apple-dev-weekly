@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://apple-dev-weekly.muchjs.workers.dev/sitemap-index.xml
+Sitemap: https://apple-dev-weekly.com/sitemap-index.xml
