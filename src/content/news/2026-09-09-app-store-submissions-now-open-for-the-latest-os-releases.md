@@ -4,7 +4,7 @@ description: "Apple 开放 iOS 27、iPadOS 27、macOS 27、tvOS 27、visionOS 27
 pubDate: 2026-09-09
 tags: [iOS, macOS, 审核]
 source: https://developer.apple.com/news/?id=k1mtkt1k
-draft: true
+draft: false
 ---
 
 ## 提交开放
