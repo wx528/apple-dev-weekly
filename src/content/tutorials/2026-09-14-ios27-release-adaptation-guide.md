@@ -3,10 +3,10 @@ title: "iOS 27 正式版适配指南：发布日就上线的完整清单"
 description: "iOS 27 发布倒计时。Xcode 27 RC 构建准备、弃用 API 清理、审核新规自查与 Duo 前瞻，一份可勾选的适配行动清单。"
 pubDate: 2026-09-14
 tags: [iOS, Xcode]
-draft: true
+draft: false
 ---
 
-Apple 已在 9 月 9 日发布会后开放 iOS 27 的 App Store 提交，正式版按惯例即将推送（预计 9 月中旬）。与其等推送后再手忙脚乱，不如现在就用 Xcode 27 Release Candidate 把一切准备好——发布日当天只差一次提审。本清单基于官方 RC 信息编写，发布日照做即可。
+Apple 已在 9 月 9 日发布会后开放 iOS 27 的 App Store 提交，**正式版已于 9 月 14 日发布**（iPhone 11 及后续机型可升级）。如果你的 App 还没动，现在是最后的窗口期——用 Xcode 27 Release Candidate 完成 Build 并提审，正式版推送后的适配搜索流量才刚刚开始。本清单基于官方 RC 信息编写，照做即可。
 
 ## 现在就能做（发布前）
 
