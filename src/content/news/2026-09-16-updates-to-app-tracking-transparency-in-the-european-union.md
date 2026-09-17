@@ -4,7 +4,7 @@ description: "Apple 将在欧盟推出 App Tracking Transparency 系统提示的
 pubDate: 2026-09-16
 tags: [欧盟, iOS, 政策]
 source: https://developer.apple.com/news/?id=idsft9ai
-draft: true
+draft: false
 ---
 
 ## 背景

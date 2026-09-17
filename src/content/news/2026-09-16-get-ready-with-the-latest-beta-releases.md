@@ -1,10 +1,10 @@
 ---
-title: "准备好迎接最新 beta 版本"
-description: "Apple 发布 iOS 27.2、iPadOS 27.2、macOS 27.2、tvOS 27.2、visionOS 27.2 和 watchOS 27.2 beta 版本。"
+title: "iPhone Duo 定档 10 月 23 日：iOS 27.1 与 Xcode 27.1 就绪"
+description: "Apple 确认 iPhone Duo 将于 10 月 23 日上市并运行 iOS 27.1；Xcode 27.1 beta（含 Duo 专属模拟器）本月晚些时候发布。六大系统 27.2 beta 同步推出。"
 pubDate: 2026-09-16
 tags: [iOS, macOS, 工具链]
 source: https://developer.apple.com/news/?id=rfb1rooi
-draft: true
+draft: false
 ---
 
 Apple 发布了 iOS 27.2、iPadOS 27.2、macOS 27.2、tvOS 27.2、visionOS 27.2 和 watchOS 27.2 的 beta 版本。开发者可以确认自己的 App 在这些版本上按预期运行，并使用 Xcode 27.2 进行构建和测试，以利用最新 SDK 中的改进。

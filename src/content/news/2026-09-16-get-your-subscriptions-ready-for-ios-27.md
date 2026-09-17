@@ -4,7 +4,7 @@ description: "Apple 介绍 iOS 27 订阅新功能 Bundles、Suites 与多席位�
 pubDate: 2026-09-16
 tags: [iOS, 变现, 生态]
 source: https://developer.apple.com/news/?id=likeohx4
-draft: true
+draft: false
 ---
 
 Apple 发布资讯，介绍 iOS 27 中订阅功能的新能力，并建议开发者提前准备。开发者可确保自己的 App 使用 StoreKit 2 来处理 Apple In-App Purchases，从而为这些新功能做好准备。
