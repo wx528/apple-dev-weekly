@@ -1,10 +1,10 @@
----
+﻿---
 title: "macOS 中完全磁盘访问权限的更新"
 description: "Apple 宣布将对 macOS 完全磁盘访问权限引入额外控制，要求用户以非常明确的操作才能授予应用此权限。"
 pubDate: 2026-10-02
 tags: [macOS, 政策]
 source: https://developer.apple.com/news/?id=p6zjojqw
-draft: true
+draft: false
 ---
 
 ## 背景

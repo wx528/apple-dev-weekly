@@ -1,10 +1,10 @@
----
+﻿---
 title: "Developer ID Certification Authority（Sub-CA）即将到期"
 description: "原 Developer ID Certification Authority（Sub-CA）将于 2027 年 2 月 1 日到期，开发者需更换新证书并重新签名。"
 pubDate: 2026-10-01
 tags: [macOS, 工具链, 生态]
 source: https://developer.apple.com/news/?id=w4atic4c
-draft: true
+draft: false
 ---
 
 ## 到期时间
