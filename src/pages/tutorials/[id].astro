@@ -1,9 +1,9 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import Comments from '../../components/Comments.astro';
 import { formatDate } from '../../utils/date';
 import { SITE } from '../../config';
-import Comments from '../../components/Comments.astro';
 
 export async function getStaticPaths() {
   const tutorials = await getCollection('tutorials', ({ data }) => !data.draft);
@@ -15,23 +15,36 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+const readingMinutes = Math.max(1, Math.ceil((entry.body?.length ?? 0) / 500));
 ---
 <Base title={`${entry.data.title} — ${SITE.name}`} description={entry.data.description} path={`/tutorials/${entry.id}/`}>
-  <article class="prose">
-    <header>
-      <h1>{entry.data.title}</h1>
-      <div class="post-card-meta meta">
-        <time datetime={entry.data.pubDate.toISOString()}>发布：{formatDate(entry.data.pubDate)}</time>
-        {entry.data.updated && (
-          <time datetime={entry.data.updated.toISOString()}>更新：{formatDate(entry.data.updated)}</time>
-        )}
+  <article>
+    <header class="article-header">
+      <a class="back-link" href="/tutorials/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+        全部教程
+      </a>
+      <div class="post-card-meta" style="margin-top: 24px;">
         {entry.data.tags.map((tag) => (
           <a class="tag" href={`/tags/${tag}/`}>{tag}</a>
         ))}
       </div>
+      <h1 class="article-title">{entry.data.title}</h1>
+      <p class="article-lede">{entry.data.description}</p>
+      <div class="article-meta">
+        <span>周刊编辑部</span>
+        <span>·</span>
+        <time datetime={entry.data.pubDate.toISOString()}>发布：{formatDate(entry.data.pubDate)}</time>
+        {entry.data.updated && (
+          <time datetime={entry.data.updated.toISOString()}>更新：{formatDate(entry.data.updated)}</time>
+        )}
+        <span>·</span>
+        <span>约 {readingMinutes} 分钟</span>
+      </div>
     </header>
-    <Content />
-    <p><a href="/tutorials/">← 返回教程列表</a></p>
-    <Comments />
+    <div class="prose">
+      <Content />
+      <Comments />
+    </div>
   </article>
 </Base>

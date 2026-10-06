@@ -5,8 +5,17 @@ const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
   <div class="container">
-    <p>© {year} {SITE.name} · <a href="/rss.xml">RSS 订阅</a> · <a href={`https://github.com/${GISCUS.repo}`}>GitHub</a></p>
-    <p>本站为独立第三方站点，与 Apple Inc. 无关；Apple 及相关商标归 Apple Inc. 所有。</p>
-    <p>原创内容采用 <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans" rel="noopener noreferrer">CC BY-NC 4.0</a> 许可，转载请注明出处并附原文链接。</p>
+    <p class="footer-copy">© {year} {SITE.name}</p>
+    <div class="footer-links">
+      <a href="/rss.xml">
+        RSS
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+      </a>
+      <a href={`https://github.com/${GISCUS.repo}`} rel="noopener noreferrer">
+        GitHub
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+      </a>
+    </div>
+    <p class="footer-disclaimer">本站为独立第三方站点，与 Apple Inc. 无关；Apple 及相关商标归 Apple Inc. 所有。原创内容采用 <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans" rel="noopener noreferrer">CC BY-NC 4.0</a> 许可，转载请注明出处并附原文链接。</p>
   </div>
 </footer>

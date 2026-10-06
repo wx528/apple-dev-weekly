@@ -18,14 +18,16 @@ export async function getStaticPaths() {
 }
 
 const { tag, entries } = Astro.props;
-const sorted = entries.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const sorted = [...entries].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 <Base title={`标签「${tag}」— ${SITE.name}`} description={`标签「${tag}」下的全部文章。`} path={`/tags/${tag}/`}>
-  <section class="hero">
+  <section class="page-hero">
     <h1>标签：{tag}</h1>
     <p>共 {sorted.length} 篇。</p>
   </section>
-  <div class="post-list">
-    {sorted.map((entry) => <PostCard entry={entry} />)}
-  </div>
+  <section class="section">
+    <div class="post-list">
+      {sorted.map((entry) => <PostCard entry={entry} />)}
+    </div>
+  </section>
 </Base>

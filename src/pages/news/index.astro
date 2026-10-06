@@ -8,11 +8,13 @@ const news = (await getCollection('news', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 <Base title={`资讯 — ${SITE.name}`} description="Apple 官方动态的中文资讯：政策、工具链、平台更新。" path="/news/">
-  <section class="hero">
+  <section class="page-hero">
     <h1>资讯</h1>
-    <p>Apple 官方动态，中文解读。</p>
+    <p>Apple 官方动态，中文解读。每篇附原文链接，关键数字以原文为准。</p>
   </section>
-  <div class="post-list">
-    {news.map((entry) => <PostCard entry={entry} />)}
-  </div>
+  <section class="section">
+    <div class="post-list">
+      {news.map((entry) => <PostCard entry={entry} />)}
+    </div>
+  </section>
 </Base>

@@ -1,9 +1,9 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import Comments from '../../components/Comments.astro';
 import { formatDate } from '../../utils/date';
 import { SITE } from '../../config';
-import Comments from '../../components/Comments.astro';
 
 export async function getStaticPaths() {
   const news = await getCollection('news', ({ data }) => !data.draft);
@@ -15,23 +15,42 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+const readingMinutes = Math.max(1, Math.ceil((entry.body?.length ?? 0) / 500));
 ---
 <Base title={`${entry.data.title} — ${SITE.name}`} description={entry.data.description} path={`/news/${entry.id}/`}>
-  <article class="prose">
-    <header>
-      <h1>{entry.data.title}</h1>
-      <div class="post-card-meta meta">
-        <time datetime={entry.data.pubDate.toISOString()}>{formatDate(entry.data.pubDate)}</time>
+  <article>
+    <header class="article-header">
+      <a class="back-link" href="/news/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+        全部资讯
+      </a>
+      <div class="post-card-meta" style="margin-top: 24px;">
         {entry.data.tags.map((tag) => (
           <a class="tag" href={`/tags/${tag}/`}>{tag}</a>
         ))}
-        {entry.data.source && (
-          <a href={entry.data.source} rel="noopener noreferrer">阅读原文 ↗</a>
-        )}
+      </div>
+      <h1 class="article-title">{entry.data.title}</h1>
+      <p class="article-lede">{entry.data.description}</p>
+      <div class="article-meta">
+        <span>周刊编辑部</span>
+        <span>·</span>
+        <time datetime={entry.data.pubDate.toISOString()}>{formatDate(entry.data.pubDate)}</time>
+        <span>·</span>
+        <span>约 {readingMinutes} 分钟</span>
       </div>
     </header>
-    <Content />
-    <p><a href="/news/">← 返回资讯列表</a></p>
-    <Comments />
+    <div class="prose">
+      <Content />
+      {entry.data.source && (
+        <div class="source-block">
+          <a class="source-link" href={entry.data.source} rel="noopener noreferrer">
+            阅读原文
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </a>
+          <p class="source-note">关键数字与日期以 Apple 官方原文为准；本篇为中文整理翻译。</p>
+        </div>
+      )}
+      <Comments />
+    </div>
   </article>
 </Base>

@@ -5,3 +5,4 @@ dist/
 Thumbs.db
 npm-debug.log*
 .superpowers/
+.playwright-mcp/

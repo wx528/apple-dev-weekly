@@ -4,18 +4,20 @@ import { formatDate } from '../utils/date';
 
 interface Props {
   entry: CollectionEntry<'news'> | CollectionEntry<'tutorials'>;
+  number?: string;
 }
 
-const { entry } = Astro.props;
+const { entry, number } = Astro.props;
 const href = `/${entry.collection}/${entry.id}/`;
 ---
 <article class="post-card">
-  <h3 class="post-card-title"><a href={href}>{entry.data.title}</a></h3>
   <div class="post-card-meta">
+    {number && <span class="tutorial-num">{number}</span>}
     <time datetime={entry.data.pubDate.toISOString()}>{formatDate(entry.data.pubDate)}</time>
     {entry.data.tags.map((tag) => (
       <a class="tag" href={`/tags/${tag}/`}>{tag}</a>
     ))}
   </div>
+  <h3 class="post-card-title"><a href={href}>{entry.data.title}</a></h3>
   <p class="post-card-desc">{entry.data.description}</p>
 </article>

@@ -8,12 +8,13 @@ const policyNews = (await getCollection('news', ({ data }) => !data.draft && dat
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 <Base title={`政策 — ${SITE.name}`} description="App Store 商业条款、审核规则与各地区监管动态的中文聚合。" path="/policy/">
-  <section class="hero">
+  <section class="page-hero">
     <h1>政策专题</h1>
-    <p>App Store 商业条款、审核规则与各地区监管动态，持续跟踪。</p>
+    <p>App Store 商业条款、审核规则与各地区监管动态，持续跟踪。可按「中国区 / 欧盟」标签进一步筛选。</p>
   </section>
-  <div class="post-list">
-    {policyNews.map((entry) => <PostCard entry={entry} />)}
-  </div>
-  <p style="margin-top:24px">说明：本专题聚合标签为「政策」的资讯；区域性政策可再按「中国区 / 欧盟」标签筛选。</p>
+  <section class="section">
+    <div class="post-list">
+      {policyNews.map((entry) => <PostCard entry={entry} />)}
+    </div>
+  </section>
 </Base>

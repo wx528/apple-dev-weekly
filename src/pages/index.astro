@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import PostCard from '../components/PostCard.astro';
+import { formatDate } from '../utils/date';
 import { SITE } from '../config';
 
 const news = (await getCollection('news', ({ data }) => !data.draft))
@@ -9,25 +10,48 @@ const news = (await getCollection('news', ({ data }) => !data.draft))
 
 const tutorials = (await getCollection('tutorials', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const [featured, ...rest] = news;
+
+const LAUNCH = Date.UTC(2026, 8, 8); // 创刊日 2026-09-08
+const issue = Math.floor((Date.now() - LAUNCH) / (7 * 24 * 60 * 60 * 1000)) + 1;
+const issueNo = String(issue).padStart(2, '0');
 ---
 <Base title={`${SITE.name} — Apple 生态情报与教程`} description={SITE.description} path="/">
   <section class="hero">
-    <h1>{SITE.name}</h1>
-    <p>Apple 官方政策、SDK 与工具链动态、实战教程，中文第一时间。</p>
-  </section>
+    <div class="hero-issue">№ {issueNo}</div>
+    <h1 class="hero-title">少一点噪声。</h1>
+    <p class="hero-tagline">{SITE.description}</p>
 
-  <section>
-    <h2>最新资讯</h2>
-    <div class="post-list">
-      {news.slice(0, 5).map((entry) => <PostCard entry={entry} />)}
+    <div class="featured-card">
+      <div class="post-card-meta">
+        <time datetime={featured.data.pubDate.toISOString()}>{formatDate(featured.data.pubDate)}</time>
+        {featured.data.tags.map((tag) => (
+          <a class="tag" href={`/tags/${tag}/`}>{tag}</a>
+        ))}
+      </div>
+      <h2 class="post-card-title"><a href={`/news/${featured.id}/`}>{featured.data.title}</a></h2>
+      <p class="post-card-desc">{featured.data.description}</p>
     </div>
-    <p><a href="/news/">查看全部资讯 →</a></p>
   </section>
 
-  <section>
-    <h2>最新教程</h2>
+  <section class="section">
+    <div class="section-head">
+      <h2 class="section-title">最新资讯</h2>
+      <a class="section-more" href="/news/">查看全部 →</a>
+    </div>
     <div class="post-list">
-      {tutorials.map((entry) => <PostCard entry={entry} />)}
+      {rest.slice(0, 4).map((entry) => <PostCard entry={entry} />)}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2 class="section-title">最新教程</h2>
+      <a class="section-more" href="/tutorials/">查看全部 →</a>
+    </div>
+    <div class="tutorial-grid">
+      {tutorials.slice(0, 3).map((entry, i) => <PostCard entry={entry} number={String(i + 1).padStart(2, '0')} />)}
     </div>
   </section>
 </Base>
