@@ -11,7 +11,7 @@ export async function scanExistingSources(newsDir: string): Promise<Set<string>>
   }
   for (const file of files.filter((f) => f.endsWith('.md'))) {
     const raw = await readFile(join(newsDir, file), 'utf8');
-    const frontmatter = raw.split(/^---$/m)[1] ?? '';
+    const frontmatter = raw.replace(/^\uFEFF/, '').split(/^---$/m)[1] ?? '';
     const match = frontmatter.match(/^source:\s*(.+)$/m);
     if (match) sources.add(match[1].trim().replace(/^['"]|['"]$/g, ''));
   }

@@ -30,6 +30,20 @@ test('scanExistingSources 目录不存在返回空集合', async () => {
   assert.equal(sources.size, 0);
 });
 
+test('scanExistingSources 容忍 UTF-8 BOM 头的文件', async () => {
+  const dir = await mkdtemp(join(tmpdir(), 'pipeline-bom-'));
+  const body = `---
+title: "BOM"
+source: https://example.com/bom
+---
+正文
+`;
+  await writeFile(join(dir, 'bom.md'), '\uFEFF' + body, 'utf8');
+  const sources = await scanExistingSources(dir);
+  assert.deepEqual([...sources], ['https://example.com/bom']);
+  await rm(dir, { recursive: true, force: true });
+});
+
 test('renderDraftMarkdown 输出满足站点 schema 的 frontmatter', () => {
   const md = renderDraftMarkdown({
     title: '测试 "标题"',
