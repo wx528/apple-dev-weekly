@@ -4,7 +4,7 @@ description: "Apple 修订 App 审核指南，新增创意素材等条款并澄�
 pubDate: 2026-10-16
 tags: [审核, 政策, 生态]
 source: https://developer.apple.com/news/?id=92th7e5i
-draft: true
+draft: false
 ---
 
 Apple 于 2026 年 10 月 16 日发布更新后的 App Review Guidelines（App 审核指南）。官方说明称，本次修订旨在支持新功能、更新政策并提供澄清。

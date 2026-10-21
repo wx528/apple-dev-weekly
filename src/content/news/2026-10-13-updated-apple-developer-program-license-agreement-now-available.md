@@ -4,7 +4,7 @@ description: "Apple 更新开发者计划许可协议，涉及安全要求、Liv
 pubDate: 2026-10-13
 tags: [政策, 生态]
 source: https://developer.apple.com/news/?id=17mwd36z
-draft: true
+draft: false
 ---
 
 Apple 于 2026 年 10 月 13 日发布更新后的 Apple Developer Program 许可协议。协议此次修订旨在支持新功能、更新政策并作出澄清。开发者需查看变更内容，并登录账户接受更新后的条款。

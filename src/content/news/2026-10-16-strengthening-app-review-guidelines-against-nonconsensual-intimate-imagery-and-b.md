@@ -4,7 +4,7 @@ description: "Apple 更新 App Review 指南，明确禁止未经同意的私密
 pubDate: 2026-10-16
 tags: [审核, 生态, 政策]
 source: https://developer.apple.com/news/?id=vvzx6cul
-draft: true
+draft: false
 ---
 
 Apple 于 2026 年 10 月 16 日发布 App Review 指南更新，以加强对未经同意的私密影像（nonconsensual intimate imagery）以及“诱饵调包”（bait-and-switch）类 App 的管控。Apple 表示，App Review 指南是 App Store 为全球用户提供安全可信体验的核心，而清晰且一致执行的标准是这一信任的基础。
