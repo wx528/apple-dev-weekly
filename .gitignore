@@ -6,3 +6,4 @@ Thumbs.db
 npm-debug.log*
 .superpowers/
 .playwright-mcp/
+STATE.md
