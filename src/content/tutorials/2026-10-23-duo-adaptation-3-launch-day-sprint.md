@@ -4,7 +4,7 @@ description: "Duo 上市倒计时。Xcode 27.1 正式版实证：自动适配的
 pubDate: 2026-10-23
 tags: [iOS, SwiftUI, Xcode]
 source: https://developer.apple.com/news/releases/
-draft: true
+draft: false
 ---
 
 [系列第一篇](/tutorials/2026-09-22-duo-adaptation-1-reserved-regions-and-arrangementview/)讲布局 API，[第二篇](/tutorials/2026-09-24-duo-adaptation-2-hinge-multiscene-accessories/)讲铰链与多场景。今天是收官篇：**iPhone Duo 上市日，你的冲刺清单和实战中真正会踩的坑**。所有结论基于 Xcode 27.1 正式版（27A9275）与官方文档实证。
