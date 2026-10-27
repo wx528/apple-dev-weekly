@@ -4,7 +4,7 @@ description: "Apple 推出多席位购买，组织可通过 Apple Business 或 A
 pubDate: 2026-10-22
 tags: [生态, 变现]
 source: https://developer.apple.com/news/?id=yfo21auu
-draft: true
+draft: false
 ---
 
 Apple 于 2026 年 10 月 22 日发布消息，组织与教育机构现在可以通过多席位购买（multiseat purchasing）批量购买 App 订阅。使用 Apple Business 或 Apple School Manager 的组织，可以借此发现并购买开发者的自动续期订阅。
