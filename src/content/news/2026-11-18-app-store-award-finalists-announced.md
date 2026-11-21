@@ -1,0 +1,20 @@
+---
+title: "App Store Award 入围名单公布"
+description: "Apple 公布 2026 年 App Store Award 入围名单，表彰 App Store 上最优秀、最具影响力的 App 与游戏及其开发者。"
+pubDate: 2026-11-18
+tags: [生态]
+source: https://developer.apple.com/news/?id=vb753j92
+draft: true
+---
+
+Apple 于 2026 年 11 月 18 日公布 App Store Award 入围名单。
+
+## 奖项定位
+
+Apple 表示，App Store Awards 每年表彰 App Store 上最优秀、最具影响力的 App 和游戏，以及这些作品背后的开发者。
+
+## 入围名单
+
+官方页面以「Meet the finalists」引导用户查看本届入围者，但原文未列出具体入围 App、游戏或开发者名单。
+
+详见[原文](https://developer.apple.com/news/?id=vb753j92)
